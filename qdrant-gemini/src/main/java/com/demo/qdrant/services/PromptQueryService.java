@@ -1,5 +1,6 @@
 package com.demo.qdrant.services;
 
+import com.demo.qdrant.models.QueryRequest;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
@@ -26,8 +27,8 @@ public class PromptQueryService {
                 I'm sorry I don't have the information you are looking for.
             """;
 
-    public String chat(String query) {
-        return chatClient.call(createPrompt(query, dataRetrievalService.searchData(query)));
+    public String chat(QueryRequest request) {
+        return chatClient.call(createPrompt(request.queryText(), dataRetrievalService.searchData(request.queryText())));
     }
 
     private String createPrompt(String query, List<Document> context) {

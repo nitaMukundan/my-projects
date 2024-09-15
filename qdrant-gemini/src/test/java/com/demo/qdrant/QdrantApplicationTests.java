@@ -1,5 +1,6 @@
 package com.demo.qdrant;
 
+import com.demo.qdrant.models.QueryRequest;
 import com.demo.qdrant.services.PromptQueryService;
 import com.demo.qdrant.services.VectorDataLoaderService;
 import com.demo.qdrant.services.VectorDataRetrieveService;
@@ -48,28 +49,28 @@ class QdrantApplicationTests {
 
 	@Test
 	void whenQueryAskedWithinContext_thenAnswerFromTheContext() {
-		String response = chat.chat("Who provided service?");
+		String response = chat.chat(new QueryRequest("Who provided service?"));
 		assertNotNull(response);
 		logger.info("Response from LLM: {}", response);
 	}
 
 	@Test
 	void whenQueryAskedWithinContext_thenAnswerFromTheContext1() {
-		String response = chat.chat("When was the surgery?");
+		String response = chat.chat(new QueryRequest("When was the surgery?"));
 		assertNotNull(response);
 		logger.info("Response from LLM: {}", response);
 	}
 
 	@Test
 	void whenQueryAskedWithinContext_thenAnswerFromTheContext3() {
-		String response = chat.chat("What is patients postal address?");
+		String response = chat.chat(new QueryRequest("What is patients postal address?"));
 		assertNotNull(response);
 		logger.info("Response from LLM: {}", response);
 	}
 
 	@Test
 	void whenQueryAskedWithinContext_thenAnswerFromTheContext4() {
-		String response = chat.chat("How is weather in paris?");
+		String response = chat.chat(new QueryRequest("How is weather in paris?"));
 		assertNotNull(response);
 		logger.info("Response from LLM: {}", response);
 	}
